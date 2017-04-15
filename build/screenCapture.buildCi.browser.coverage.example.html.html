@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <title>Code coverage report for node-npmtest-node-schedule/node-schedule/lib/schedule.js</title>
     <meta charset="utf-8">
     <style>
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-node-schedule/node-schedule/lib/</a> &#187; schedule.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-node-schedule/node-schedule/lib/</a> » schedule.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -1398,251 +1396,251 @@ var events = require('events'),
 /* Job object */
 var anonJobCounter = 0;
 &nbsp;
-<span class="fstat-no" title="function not covered" >function isValidDate(date) {</span>
+<span class="fstat-no" title="function not covered">function isValidDate(date) {</span>
   // Taken from http://stackoverflow.com/a/12372720/1562178
   // If getTime() returns NaN it'll return false anyway
-<span class="cstat-no" title="statement not covered" >  return date.getTime() === date.getTime();</span>
+<span class="cstat-no" title="statement not covered">  return date.getTime() === date.getTime();</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function Job(name, job, callback) {</span>
+<span class="fstat-no" title="function not covered">function Job(name, job, callback) {</span>
   // setup a private pendingInvocations variable
-<span class="cstat-no" title="statement not covered" >  var pendingInvocations = [];</span>
+<span class="cstat-no" title="statement not covered">  var pendingInvocations = [];</span>
 &nbsp;
   //setup a private number of invocations variable
-<span class="cstat-no" title="statement not covered" >  var triggeredJobs = 0;</span>
+<span class="cstat-no" title="statement not covered">  var triggeredJobs = 0;</span>
 &nbsp;
   // Set scope vars
-<span class="cstat-no" title="statement not covered" >  var jobName = name &amp;&amp; typeof name === 'string' ? name : '&lt;Anonymous Job ' + (++anonJobCounter) + '&gt;';</span>
-<span class="cstat-no" title="statement not covered" >  this.job = name &amp;&amp; typeof name === 'function' ? name : job;</span>
+<span class="cstat-no" title="statement not covered">  var jobName = name &amp;&amp; typeof name === 'string' ? name : '&lt;Anonymous Job ' + (++anonJobCounter) + '&gt;';</span>
+<span class="cstat-no" title="statement not covered">  this.job = name &amp;&amp; typeof name === 'function' ? name : job;</span>
 &nbsp;
   // Make sure callback is actually a callback
-<span class="cstat-no" title="statement not covered" >  if (this.job === name) {</span>
+<span class="cstat-no" title="statement not covered">  if (this.job === name) {</span>
     // Name wasn't provided and maybe a callback is there
-<span class="cstat-no" title="statement not covered" >    this.callback = typeof job === 'function' ? job : false;</span>
+<span class="cstat-no" title="statement not covered">    this.callback = typeof job === 'function' ? job : false;</span>
   } else {
     // Name was provided, and maybe a callback is there
-<span class="cstat-no" title="statement not covered" >    this.callback = typeof callback === 'function' ? callback : false;</span>
+<span class="cstat-no" title="statement not covered">    this.callback = typeof callback === 'function' ? callback : false;</span>
   }
 &nbsp;
   // Check for generator
-<span class="cstat-no" title="statement not covered" >  if (typeof this.job === 'function' &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered">  if (typeof this.job === 'function' &amp;&amp;</span>
       this.job.prototype &amp;&amp;
       this.job.prototype.next) {
-<span class="cstat-no" title="statement not covered" >    this.job = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >      return this.next().value;</span>
+<span class="cstat-no" title="statement not covered">    this.job = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">      return this.next().value;</span>
     }.bind(this.job.call(this));
   }
 &nbsp;
   // define properties
-<span class="cstat-no" title="statement not covered" >  Object.defineProperty(this, 'name', {</span>
+<span class="cstat-no" title="statement not covered">  Object.defineProperty(this, 'name', {</span>
     value: jobName,
     writable: false,
     enumerable: true
   });
 &nbsp;
   // method that require private access
-<span class="cstat-no" title="statement not covered" >  this.trackInvocation = <span class="fstat-no" title="function not covered" >function(invocation) {</span></span>
+<span class="cstat-no" title="statement not covered">  this.trackInvocation = <span class="fstat-no" title="function not covered">function(invocation) {</span></span>
     // add to our invocation list
-<span class="cstat-no" title="statement not covered" >    sorted.add(pendingInvocations, invocation, sorter);</span>
-<span class="cstat-no" title="statement not covered" >    return true;</span>
+<span class="cstat-no" title="statement not covered">    sorted.add(pendingInvocations, invocation, sorter);</span>
+<span class="cstat-no" title="statement not covered">    return true;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.stopTrackingInvocation = <span class="fstat-no" title="function not covered" >function(invocation) {</span></span>
-<span class="cstat-no" title="statement not covered" >    var invIdx = pendingInvocations.indexOf(invocation);</span>
-<span class="cstat-no" title="statement not covered" >    if (invIdx &gt; -1) {</span>
-<span class="cstat-no" title="statement not covered" >      pendingInvocations.splice(invIdx, 1);</span>
-<span class="cstat-no" title="statement not covered" >      return true;</span>
+<span class="cstat-no" title="statement not covered">  this.stopTrackingInvocation = <span class="fstat-no" title="function not covered">function(invocation) {</span></span>
+<span class="cstat-no" title="statement not covered">    var invIdx = pendingInvocations.indexOf(invocation);</span>
+<span class="cstat-no" title="statement not covered">    if (invIdx &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered">      pendingInvocations.splice(invIdx, 1);</span>
+<span class="cstat-no" title="statement not covered">      return true;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return false;</span>
+<span class="cstat-no" title="statement not covered">    return false;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.triggeredJobs = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    return triggeredJobs;</span>
+<span class="cstat-no" title="statement not covered">  this.triggeredJobs = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    return triggeredJobs;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.setTriggeredJobs = <span class="fstat-no" title="function not covered" >function(triggeredJob) {</span></span>
-<span class="cstat-no" title="statement not covered" >    triggeredJobs = triggeredJob;</span>
+<span class="cstat-no" title="statement not covered">  this.setTriggeredJobs = <span class="fstat-no" title="function not covered">function(triggeredJob) {</span></span>
+<span class="cstat-no" title="statement not covered">    triggeredJobs = triggeredJob;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.cancel = <span class="fstat-no" title="function not covered" >function(reschedule) {</span></span>
-<span class="cstat-no" title="statement not covered" >    reschedule = (typeof reschedule == 'boolean') ? reschedule : false;</span>
+<span class="cstat-no" title="statement not covered">  this.cancel = <span class="fstat-no" title="function not covered">function(reschedule) {</span></span>
+<span class="cstat-no" title="statement not covered">    reschedule = (typeof reschedule == 'boolean') ? reschedule : false;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var inv, newInv;</span>
-<span class="cstat-no" title="statement not covered" >    var newInvs = [];</span>
-<span class="cstat-no" title="statement not covered" >    for (var j = 0; j &lt; pendingInvocations.length; j++) {</span>
-<span class="cstat-no" title="statement not covered" >      inv = pendingInvocations[j];</span>
+<span class="cstat-no" title="statement not covered">    var inv, newInv;</span>
+<span class="cstat-no" title="statement not covered">    var newInvs = [];</span>
+<span class="cstat-no" title="statement not covered">    for (var j = 0; j &lt; pendingInvocations.length; j++) {</span>
+<span class="cstat-no" title="statement not covered">      inv = pendingInvocations[j];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      cancelInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">      cancelInvocation(inv);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (reschedule &amp;&amp; inv.recurrenceRule.recurs) {</span>
-<span class="cstat-no" title="statement not covered" >        newInv = scheduleNextRecurrence(inv.recurrenceRule, this, inv.fireDate, inv.endDate);</span>
-<span class="cstat-no" title="statement not covered" >        if (newInv !== null) {</span>
-<span class="cstat-no" title="statement not covered" >          newInvs.push(newInv);</span>
+<span class="cstat-no" title="statement not covered">      if (reschedule &amp;&amp; inv.recurrenceRule.recurs) {</span>
+<span class="cstat-no" title="statement not covered">        newInv = scheduleNextRecurrence(inv.recurrenceRule, this, inv.fireDate, inv.endDate);</span>
+<span class="cstat-no" title="statement not covered">        if (newInv !== null) {</span>
+<span class="cstat-no" title="statement not covered">          newInvs.push(newInv);</span>
         }
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    pendingInvocations = [];</span>
+<span class="cstat-no" title="statement not covered">    pendingInvocations = [];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    for (var k = 0; k &lt; newInvs.length; k++) {</span>
-<span class="cstat-no" title="statement not covered" >      this.trackInvocation(newInvs[k]);</span>
+<span class="cstat-no" title="statement not covered">    for (var k = 0; k &lt; newInvs.length; k++) {</span>
+<span class="cstat-no" title="statement not covered">      this.trackInvocation(newInvs[k]);</span>
     }
 &nbsp;
     // remove from scheduledJobs if reschedule === false
-<span class="cstat-no" title="statement not covered" >    if (!reschedule) {</span>
-<span class="cstat-no" title="statement not covered" >      if (this.name) {</span>
-<span class="cstat-no" title="statement not covered" >        delete scheduledJobs[this.name];</span>
+<span class="cstat-no" title="statement not covered">    if (!reschedule) {</span>
+<span class="cstat-no" title="statement not covered">      if (this.name) {</span>
+<span class="cstat-no" title="statement not covered">        delete scheduledJobs[this.name];</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return true;</span>
+<span class="cstat-no" title="statement not covered">    return true;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.cancelNext = <span class="fstat-no" title="function not covered" >function(reschedule) {</span></span>
-<span class="cstat-no" title="statement not covered" >    reschedule = (typeof reschedule == 'boolean') ? reschedule : true;</span>
+<span class="cstat-no" title="statement not covered">  this.cancelNext = <span class="fstat-no" title="function not covered">function(reschedule) {</span></span>
+<span class="cstat-no" title="statement not covered">    reschedule = (typeof reschedule == 'boolean') ? reschedule : true;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!pendingInvocations.length) {</span>
-<span class="cstat-no" title="statement not covered" >      return false;</span>
+<span class="cstat-no" title="statement not covered">    if (!pendingInvocations.length) {</span>
+<span class="cstat-no" title="statement not covered">      return false;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var newInv;</span>
-<span class="cstat-no" title="statement not covered" >    var nextInv = pendingInvocations.shift();</span>
+<span class="cstat-no" title="statement not covered">    var newInv;</span>
+<span class="cstat-no" title="statement not covered">    var nextInv = pendingInvocations.shift();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    cancelInvocation(nextInv);</span>
+<span class="cstat-no" title="statement not covered">    cancelInvocation(nextInv);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (reschedule &amp;&amp; nextInv.recurrenceRule.recurs) {</span>
-<span class="cstat-no" title="statement not covered" >      newInv = scheduleNextRecurrence(nextInv.recurrenceRule, this, nextInv.fireDate, nextInv.endDate);</span>
-<span class="cstat-no" title="statement not covered" >      if (newInv !== null) {</span>
-<span class="cstat-no" title="statement not covered" >        this.trackInvocation(newInv);</span>
+<span class="cstat-no" title="statement not covered">    if (reschedule &amp;&amp; nextInv.recurrenceRule.recurs) {</span>
+<span class="cstat-no" title="statement not covered">      newInv = scheduleNextRecurrence(nextInv.recurrenceRule, this, nextInv.fireDate, nextInv.endDate);</span>
+<span class="cstat-no" title="statement not covered">      if (newInv !== null) {</span>
+<span class="cstat-no" title="statement not covered">        this.trackInvocation(newInv);</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return true;</span>
+<span class="cstat-no" title="statement not covered">    return true;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.reschedule = <span class="fstat-no" title="function not covered" >function(spec) {</span></span>
-<span class="cstat-no" title="statement not covered" >    var inv;</span>
-<span class="cstat-no" title="statement not covered" >    var cInvs = pendingInvocations.slice();</span>
+<span class="cstat-no" title="statement not covered">  this.reschedule = <span class="fstat-no" title="function not covered">function(spec) {</span></span>
+<span class="cstat-no" title="statement not covered">    var inv;</span>
+<span class="cstat-no" title="statement not covered">    var cInvs = pendingInvocations.slice();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    for (var j = 0; j &lt; cInvs.length; j++) {</span>
-<span class="cstat-no" title="statement not covered" >      inv = cInvs[j];</span>
+<span class="cstat-no" title="statement not covered">    for (var j = 0; j &lt; cInvs.length; j++) {</span>
+<span class="cstat-no" title="statement not covered">      inv = cInvs[j];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      cancelInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">      cancelInvocation(inv);</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    pendingInvocations = [];</span>
+<span class="cstat-no" title="statement not covered">    pendingInvocations = [];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (this.schedule(spec)) {</span>
-<span class="cstat-no" title="statement not covered" >      this.setTriggeredJobs(0);</span>
-<span class="cstat-no" title="statement not covered" >      return true;</span>
+<span class="cstat-no" title="statement not covered">    if (this.schedule(spec)) {</span>
+<span class="cstat-no" title="statement not covered">      this.setTriggeredJobs(0);</span>
+<span class="cstat-no" title="statement not covered">      return true;</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      pendingInvocations = cInvs;</span>
-<span class="cstat-no" title="statement not covered" >      return false;</span>
+<span class="cstat-no" title="statement not covered">      pendingInvocations = cInvs;</span>
+<span class="cstat-no" title="statement not covered">      return false;</span>
     }
   };
-<span class="cstat-no" title="statement not covered" >  this.nextInvocation = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    if (!pendingInvocations.length) {</span>
-<span class="cstat-no" title="statement not covered" >      return null;</span>
+<span class="cstat-no" title="statement not covered">  this.nextInvocation = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    if (!pendingInvocations.length) {</span>
+<span class="cstat-no" title="statement not covered">      return null;</span>
     }
-<span class="cstat-no" title="statement not covered" >    return pendingInvocations[0].fireDate;</span>
+<span class="cstat-no" title="statement not covered">    return pendingInvocations[0].fireDate;</span>
   };
-<span class="cstat-no" title="statement not covered" >  this.pendingInvocations = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    return pendingInvocations;</span>
+<span class="cstat-no" title="statement not covered">  this.pendingInvocations = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    return pendingInvocations;</span>
   };
 }
 &nbsp;
 util.inherits(Job, events.EventEmitter);
 &nbsp;
-Job.prototype.invoke = <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >  if (typeof this.job == 'function') {</span>
-<span class="cstat-no" title="statement not covered" >    this.setTriggeredJobs(this.triggeredJobs() + 1);</span>
-<span class="cstat-no" title="statement not covered" >    this.job();</span>
+Job.prototype.invoke = <span class="fstat-no" title="function not covered">function() {</span>
+<span class="cstat-no" title="statement not covered">  if (typeof this.job == 'function') {</span>
+<span class="cstat-no" title="statement not covered">    this.setTriggeredJobs(this.triggeredJobs() + 1);</span>
+<span class="cstat-no" title="statement not covered">    this.job();</span>
   } else {
-<span class="cstat-no" title="statement not covered" >    this.job.execute();</span>
+<span class="cstat-no" title="statement not covered">    this.job.execute();</span>
   }
 };
 &nbsp;
-Job.prototype.runOnDate = <span class="fstat-no" title="function not covered" >function(date) {</span>
-<span class="cstat-no" title="statement not covered" >  return this.schedule(date);</span>
+Job.prototype.runOnDate = <span class="fstat-no" title="function not covered">function(date) {</span>
+<span class="cstat-no" title="statement not covered">  return this.schedule(date);</span>
 };
 &nbsp;
-Job.prototype.schedule = <span class="fstat-no" title="function not covered" >function(spec) {</span>
-<span class="cstat-no" title="statement not covered" >  var self = this;</span>
-<span class="cstat-no" title="statement not covered" >  var success = false;</span>
-<span class="cstat-no" title="statement not covered" >  var inv;</span>
-<span class="cstat-no" title="statement not covered" >  var start;</span>
-<span class="cstat-no" title="statement not covered" >  var end;</span>
+Job.prototype.schedule = <span class="fstat-no" title="function not covered">function(spec) {</span>
+<span class="cstat-no" title="statement not covered">  var self = this;</span>
+<span class="cstat-no" title="statement not covered">  var success = false;</span>
+<span class="cstat-no" title="statement not covered">  var inv;</span>
+<span class="cstat-no" title="statement not covered">  var start;</span>
+<span class="cstat-no" title="statement not covered">  var end;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (typeof spec === 'object' &amp;&amp; spec.rule) {</span>
-<span class="cstat-no" title="statement not covered" >    start = spec.start || null;</span>
-<span class="cstat-no" title="statement not covered" >    end = spec.end || null;</span>
-<span class="cstat-no" title="statement not covered" >    spec = spec.rule;</span>
+<span class="cstat-no" title="statement not covered">  if (typeof spec === 'object' &amp;&amp; spec.rule) {</span>
+<span class="cstat-no" title="statement not covered">    start = spec.start || null;</span>
+<span class="cstat-no" title="statement not covered">    end = spec.end || null;</span>
+<span class="cstat-no" title="statement not covered">    spec = spec.rule;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (start != null) {</span>
-<span class="cstat-no" title="statement not covered" >      if (!(start instanceof Date)) {</span>
-<span class="cstat-no" title="statement not covered" >        start = new Date(start);</span>
+<span class="cstat-no" title="statement not covered">    if (start != null) {</span>
+<span class="cstat-no" title="statement not covered">      if (!(start instanceof Date)) {</span>
+<span class="cstat-no" title="statement not covered">        start = new Date(start);</span>
       }
-<span class="cstat-no" title="statement not covered" >      if (!isValidDate(start) || start.getTime() &lt; Date.now()) {</span>
-<span class="cstat-no" title="statement not covered" >        start = null;</span>
+<span class="cstat-no" title="statement not covered">      if (!isValidDate(start) || start.getTime() &lt; Date.now()) {</span>
+<span class="cstat-no" title="statement not covered">        start = null;</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (end != null &amp;&amp; !(end instanceof Date) &amp;&amp; !isValidDate(end = new Date(end))) {</span>
-<span class="cstat-no" title="statement not covered" >      end = null;</span>
+<span class="cstat-no" title="statement not covered">    if (end != null &amp;&amp; !(end instanceof Date) &amp;&amp; !isValidDate(end = new Date(end))) {</span>
+<span class="cstat-no" title="statement not covered">      end = null;</span>
     }
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    var res = cronParser.parseExpression(spec, { currentDate: start });</span>
-<span class="cstat-no" title="statement not covered" >    inv = scheduleNextRecurrence(res, self, start, end);</span>
-<span class="cstat-no" title="statement not covered" >    if (inv !== null) {</span>
-<span class="cstat-no" title="statement not covered" >      success = self.trackInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">  try {</span>
+<span class="cstat-no" title="statement not covered">    var res = cronParser.parseExpression(spec, { currentDate: start });</span>
+<span class="cstat-no" title="statement not covered">    inv = scheduleNextRecurrence(res, self, start, end);</span>
+<span class="cstat-no" title="statement not covered">    if (inv !== null) {</span>
+<span class="cstat-no" title="statement not covered">      success = self.trackInvocation(inv);</span>
     }
 &nbsp;
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    var type = typeof spec;</span>
-<span class="cstat-no" title="statement not covered" >    if ((type === 'string') || (type === 'number')) {</span>
-<span class="cstat-no" title="statement not covered" >      spec = new Date(spec);</span>
+<span class="cstat-no" title="statement not covered">    var type = typeof spec;</span>
+<span class="cstat-no" title="statement not covered">    if ((type === 'string') || (type === 'number')) {</span>
+<span class="cstat-no" title="statement not covered">      spec = new Date(spec);</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if ((spec instanceof Date) &amp;&amp; (isValidDate(spec))) {</span>
-<span class="cstat-no" title="statement not covered" >      if (spec.getTime() &gt;= Date.now()) {</span>
-<span class="cstat-no" title="statement not covered" >        inv = new Invocation(self, spec);</span>
-<span class="cstat-no" title="statement not covered" >        scheduleInvocation(inv);</span>
-<span class="cstat-no" title="statement not covered" >        success = self.trackInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">    if ((spec instanceof Date) &amp;&amp; (isValidDate(spec))) {</span>
+<span class="cstat-no" title="statement not covered">      if (spec.getTime() &gt;= Date.now()) {</span>
+<span class="cstat-no" title="statement not covered">        inv = new Invocation(self, spec);</span>
+<span class="cstat-no" title="statement not covered">        scheduleInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">        success = self.trackInvocation(inv);</span>
       }
-    } else <span class="cstat-no" title="statement not covered" >if (type === 'object') {</span>
-<span class="cstat-no" title="statement not covered" >      if (!(spec instanceof RecurrenceRule)) {</span>
-<span class="cstat-no" title="statement not covered" >        var r = new RecurrenceRule();</span>
-<span class="cstat-no" title="statement not covered" >        if ('year' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.year = spec.year;</span>
+    } else <span class="cstat-no" title="statement not covered">if (type === 'object') {</span>
+<span class="cstat-no" title="statement not covered">      if (!(spec instanceof RecurrenceRule)) {</span>
+<span class="cstat-no" title="statement not covered">        var r = new RecurrenceRule();</span>
+<span class="cstat-no" title="statement not covered">        if ('year' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.year = spec.year;</span>
         }
-<span class="cstat-no" title="statement not covered" >        if ('month' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.month = spec.month;</span>
+<span class="cstat-no" title="statement not covered">        if ('month' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.month = spec.month;</span>
         }
-<span class="cstat-no" title="statement not covered" >        if ('date' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.date = spec.date;</span>
+<span class="cstat-no" title="statement not covered">        if ('date' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.date = spec.date;</span>
         }
-<span class="cstat-no" title="statement not covered" >        if ('dayOfWeek' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.dayOfWeek = spec.dayOfWeek;</span>
+<span class="cstat-no" title="statement not covered">        if ('dayOfWeek' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.dayOfWeek = spec.dayOfWeek;</span>
         }
-<span class="cstat-no" title="statement not covered" >        if ('hour' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.hour = spec.hour;</span>
+<span class="cstat-no" title="statement not covered">        if ('hour' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.hour = spec.hour;</span>
         }
-<span class="cstat-no" title="statement not covered" >        if ('minute' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.minute = spec.minute;</span>
+<span class="cstat-no" title="statement not covered">        if ('minute' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.minute = spec.minute;</span>
         }
-<span class="cstat-no" title="statement not covered" >        if ('second' in spec) {</span>
-<span class="cstat-no" title="statement not covered" >          r.second = spec.second;</span>
+<span class="cstat-no" title="statement not covered">        if ('second' in spec) {</span>
+<span class="cstat-no" title="statement not covered">          r.second = spec.second;</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        spec = r;</span>
+<span class="cstat-no" title="statement not covered">        spec = r;</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      inv = scheduleNextRecurrence(spec, self, start, end);</span>
-<span class="cstat-no" title="statement not covered" >      if (inv !== null) {</span>
-<span class="cstat-no" title="statement not covered" >        success = self.trackInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">      inv = scheduleNextRecurrence(spec, self, start, end);</span>
+<span class="cstat-no" title="statement not covered">      if (inv !== null) {</span>
+<span class="cstat-no" title="statement not covered">        success = self.trackInvocation(inv);</span>
       }
     }
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  scheduledJobs[this.name] = this;</span>
-<span class="cstat-no" title="statement not covered" >  return success;</span>
+<span class="cstat-no" title="statement not covered">  scheduledJobs[this.name] = this;</span>
+<span class="cstat-no" title="statement not covered">  return success;</span>
 };
 &nbsp;
 /* API
@@ -1662,37 +1660,37 @@ var DoesntRecur = new RecurrenceRule();
 DoesntRecur.recurs = false;
 &nbsp;
 /* Invocation object */
-<span class="fstat-no" title="function not covered" >function Invocation(job, fireDate, recurrenceRule, endDate) {</span>
-<span class="cstat-no" title="statement not covered" >  this.job = job;</span>
-<span class="cstat-no" title="statement not covered" >  this.fireDate = fireDate;</span>
-<span class="cstat-no" title="statement not covered" >  this.endDate = endDate;</span>
-<span class="cstat-no" title="statement not covered" >  this.recurrenceRule = recurrenceRule || DoesntRecur;</span>
+<span class="fstat-no" title="function not covered">function Invocation(job, fireDate, recurrenceRule, endDate) {</span>
+<span class="cstat-no" title="statement not covered">  this.job = job;</span>
+<span class="cstat-no" title="statement not covered">  this.fireDate = fireDate;</span>
+<span class="cstat-no" title="statement not covered">  this.endDate = endDate;</span>
+<span class="cstat-no" title="statement not covered">  this.recurrenceRule = recurrenceRule || DoesntRecur;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.timerID = null;</span>
+<span class="cstat-no" title="statement not covered">  this.timerID = null;</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function sorter(a, b) {</span>
-<span class="cstat-no" title="statement not covered" >  return (a.fireDate.getTime() - b.fireDate.getTime());</span>
+<span class="fstat-no" title="function not covered">function sorter(a, b) {</span>
+<span class="cstat-no" title="statement not covered">  return (a.fireDate.getTime() - b.fireDate.getTime());</span>
 }
 &nbsp;
 /* Range object */
-<span class="fstat-no" title="function not covered" >function Range(start, end, step) {</span>
-<span class="cstat-no" title="statement not covered" >  this.start = start || 0;</span>
-<span class="cstat-no" title="statement not covered" >  this.end = end || 60;</span>
-<span class="cstat-no" title="statement not covered" >  this.step = step || 1;</span>
+<span class="fstat-no" title="function not covered">function Range(start, end, step) {</span>
+<span class="cstat-no" title="statement not covered">  this.start = start || 0;</span>
+<span class="cstat-no" title="statement not covered">  this.end = end || 60;</span>
+<span class="cstat-no" title="statement not covered">  this.step = step || 1;</span>
 }
 &nbsp;
-Range.prototype.contains = <span class="fstat-no" title="function not covered" >function(val) {</span>
-<span class="cstat-no" title="statement not covered" >  if (this.step === null || this.step === 1) {</span>
-<span class="cstat-no" title="statement not covered" >    return (val &gt;= this.start &amp;&amp; val &lt;= this.end);</span>
+Range.prototype.contains = <span class="fstat-no" title="function not covered">function(val) {</span>
+<span class="cstat-no" title="statement not covered">  if (this.step === null || this.step === 1) {</span>
+<span class="cstat-no" title="statement not covered">    return (val &gt;= this.start &amp;&amp; val &lt;= this.end);</span>
   } else {
-<span class="cstat-no" title="statement not covered" >    for (var i = this.start; i &lt; this.end; i += this.step) {</span>
-<span class="cstat-no" title="statement not covered" >      if (i === val) {</span>
-<span class="cstat-no" title="statement not covered" >        return true;</span>
+<span class="cstat-no" title="statement not covered">    for (var i = this.start; i &lt; this.end; i += this.step) {</span>
+<span class="cstat-no" title="statement not covered">      if (i === val) {</span>
+<span class="cstat-no" title="statement not covered">        return true;</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return false;</span>
+<span class="cstat-no" title="statement not covered">    return false;</span>
   }
 };
 &nbsp;
@@ -1709,248 +1707,248 @@ Range.prototype.contains = <span class="fstat-no" title="function not covered" >
 function RecurrenceRule(year, month, date, dayOfWeek, hour, minute, second) {
   this.recurs = true;
 &nbsp;
-  this.year = (year == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered" >year;</span>
-  this.month = (month == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered" >month;</span>
-  this.date = (date == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered" >date;</span>
-  this.dayOfWeek = (dayOfWeek == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered" >dayOfWeek;</span>
-  this.hour = (hour == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered" >hour;</span>
-  this.minute = (minute == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered" >minute;</span>
-  this.second = (second == null) ? 0 : <span class="branch-1 cbranch-no" title="branch not covered" >second;</span>
+  this.year = (year == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered">year;</span>
+  this.month = (month == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered">month;</span>
+  this.date = (date == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered">date;</span>
+  this.dayOfWeek = (dayOfWeek == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered">dayOfWeek;</span>
+  this.hour = (hour == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered">hour;</span>
+  this.minute = (minute == null) ? null : <span class="branch-1 cbranch-no" title="branch not covered">minute;</span>
+  this.second = (second == null) ? 0 : <span class="branch-1 cbranch-no" title="branch not covered">second;</span>
 }
 &nbsp;
-RecurrenceRule.prototype.nextInvocationDate = <span class="fstat-no" title="function not covered" >function(base) {</span>
-<span class="cstat-no" title="statement not covered" >  base = (base instanceof Date) ? base : (new Date());</span>
-<span class="cstat-no" title="statement not covered" >  if (!this.recurs) {</span>
-<span class="cstat-no" title="statement not covered" >    return null;</span>
+RecurrenceRule.prototype.nextInvocationDate = <span class="fstat-no" title="function not covered">function(base) {</span>
+<span class="cstat-no" title="statement not covered">  base = (base instanceof Date) ? base : (new Date());</span>
+<span class="cstat-no" title="statement not covered">  if (!this.recurs) {</span>
+<span class="cstat-no" title="statement not covered">    return null;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var now = new Date();</span>
-<span class="cstat-no" title="statement not covered" >  var fullYear = now.getFullYear();</span>
-<span class="cstat-no" title="statement not covered" >  if ((this.year !== null) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered">  var now = new Date();</span>
+<span class="cstat-no" title="statement not covered">  var fullYear = now.getFullYear();</span>
+<span class="cstat-no" title="statement not covered">  if ((this.year !== null) &amp;&amp;</span>
       (typeof this.year == 'number') &amp;&amp;
       (this.year &lt; fullYear)) {
-<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="cstat-no" title="statement not covered">    return null;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var next = new CronDate(base.getTime());</span>
-<span class="cstat-no" title="statement not covered" >  next.addSecond();</span>
+<span class="cstat-no" title="statement not covered">  var next = new CronDate(base.getTime());</span>
+<span class="cstat-no" title="statement not covered">  next.addSecond();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  while (true) {</span>
-<span class="cstat-no" title="statement not covered" >    if (this.year !== null) {</span>
-<span class="cstat-no" title="statement not covered" >      fullYear = next.getFullYear();</span>
-<span class="cstat-no" title="statement not covered" >      if ((typeof this.year == 'number') &amp;&amp; (this.year &lt; fullYear)) {</span>
-<span class="cstat-no" title="statement not covered" >        next = null;</span>
-<span class="cstat-no" title="statement not covered" >        break;</span>
+<span class="cstat-no" title="statement not covered">  while (true) {</span>
+<span class="cstat-no" title="statement not covered">    if (this.year !== null) {</span>
+<span class="cstat-no" title="statement not covered">      fullYear = next.getFullYear();</span>
+<span class="cstat-no" title="statement not covered">      if ((typeof this.year == 'number') &amp;&amp; (this.year &lt; fullYear)) {</span>
+<span class="cstat-no" title="statement not covered">        next = null;</span>
+<span class="cstat-no" title="statement not covered">        break;</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (!recurMatch(fullYear, this.year)) {</span>
-<span class="cstat-no" title="statement not covered" >        next.addYear();</span>
-<span class="cstat-no" title="statement not covered" >        next.setMonth(0);</span>
-<span class="cstat-no" title="statement not covered" >        next.setDate(1);</span>
-<span class="cstat-no" title="statement not covered" >        next.setHours(0);</span>
-<span class="cstat-no" title="statement not covered" >        next.setMinutes(0);</span>
-<span class="cstat-no" title="statement not covered" >        next.setSeconds(0);</span>
-<span class="cstat-no" title="statement not covered" >        continue;</span>
+<span class="cstat-no" title="statement not covered">      if (!recurMatch(fullYear, this.year)) {</span>
+<span class="cstat-no" title="statement not covered">        next.addYear();</span>
+<span class="cstat-no" title="statement not covered">        next.setMonth(0);</span>
+<span class="cstat-no" title="statement not covered">        next.setDate(1);</span>
+<span class="cstat-no" title="statement not covered">        next.setHours(0);</span>
+<span class="cstat-no" title="statement not covered">        next.setMinutes(0);</span>
+<span class="cstat-no" title="statement not covered">        next.setSeconds(0);</span>
+<span class="cstat-no" title="statement not covered">        continue;</span>
       }
     }
-<span class="cstat-no" title="statement not covered" >    if (this.month != null &amp;&amp; !recurMatch(next.getMonth(), this.month)) {</span>
-<span class="cstat-no" title="statement not covered" >      next.addMonth();</span>
-<span class="cstat-no" title="statement not covered" >      continue;</span>
+<span class="cstat-no" title="statement not covered">    if (this.month != null &amp;&amp; !recurMatch(next.getMonth(), this.month)) {</span>
+<span class="cstat-no" title="statement not covered">      next.addMonth();</span>
+<span class="cstat-no" title="statement not covered">      continue;</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (this.date != null &amp;&amp; !recurMatch(next.getDate(), this.date)) {</span>
-<span class="cstat-no" title="statement not covered" >      next.addDay();</span>
-<span class="cstat-no" title="statement not covered" >      continue;</span>
+<span class="cstat-no" title="statement not covered">    if (this.date != null &amp;&amp; !recurMatch(next.getDate(), this.date)) {</span>
+<span class="cstat-no" title="statement not covered">      next.addDay();</span>
+<span class="cstat-no" title="statement not covered">      continue;</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (this.dayOfWeek != null &amp;&amp; !recurMatch(next.getDay(), this.dayOfWeek)) {</span>
-<span class="cstat-no" title="statement not covered" >      next.addDay();</span>
-<span class="cstat-no" title="statement not covered" >      continue;</span>
+<span class="cstat-no" title="statement not covered">    if (this.dayOfWeek != null &amp;&amp; !recurMatch(next.getDay(), this.dayOfWeek)) {</span>
+<span class="cstat-no" title="statement not covered">      next.addDay();</span>
+<span class="cstat-no" title="statement not covered">      continue;</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (this.hour != null &amp;&amp; !recurMatch(next.getHours(), this.hour)) {</span>
-<span class="cstat-no" title="statement not covered" >      next.addHour();</span>
-<span class="cstat-no" title="statement not covered" >      continue;</span>
+<span class="cstat-no" title="statement not covered">    if (this.hour != null &amp;&amp; !recurMatch(next.getHours(), this.hour)) {</span>
+<span class="cstat-no" title="statement not covered">      next.addHour();</span>
+<span class="cstat-no" title="statement not covered">      continue;</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (this.minute != null &amp;&amp; !recurMatch(next.getMinutes(), this.minute)) {</span>
-<span class="cstat-no" title="statement not covered" >      next.addMinute();</span>
-<span class="cstat-no" title="statement not covered" >      continue;</span>
+<span class="cstat-no" title="statement not covered">    if (this.minute != null &amp;&amp; !recurMatch(next.getMinutes(), this.minute)) {</span>
+<span class="cstat-no" title="statement not covered">      next.addMinute();</span>
+<span class="cstat-no" title="statement not covered">      continue;</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (this.second != null &amp;&amp; !recurMatch(next.getSeconds(), this.second)) {</span>
-<span class="cstat-no" title="statement not covered" >      next.addSecond();</span>
-<span class="cstat-no" title="statement not covered" >      continue;</span>
+<span class="cstat-no" title="statement not covered">    if (this.second != null &amp;&amp; !recurMatch(next.getSeconds(), this.second)) {</span>
+<span class="cstat-no" title="statement not covered">      next.addSecond();</span>
+<span class="cstat-no" title="statement not covered">      continue;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    break;</span>
+<span class="cstat-no" title="statement not covered">    break;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return next;</span>
+<span class="cstat-no" title="statement not covered">  return next;</span>
 };
 &nbsp;
-<span class="fstat-no" title="function not covered" >function recurMatch(val, matcher) {</span>
-<span class="cstat-no" title="statement not covered" >  if (matcher == null) {</span>
-<span class="cstat-no" title="statement not covered" >    return true;</span>
+<span class="fstat-no" title="function not covered">function recurMatch(val, matcher) {</span>
+<span class="cstat-no" title="statement not covered">  if (matcher == null) {</span>
+<span class="cstat-no" title="statement not covered">    return true;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (typeof matcher === 'number' || typeof matcher === 'string') {</span>
-<span class="cstat-no" title="statement not covered" >    return (val === matcher);</span>
-  } else <span class="cstat-no" title="statement not covered" >if (matcher instanceof Range) {</span>
-<span class="cstat-no" title="statement not covered" >    return matcher.contains(val);</span>
-  } else <span class="cstat-no" title="statement not covered" >if (Array.isArray(matcher) || (matcher instanceof Array)) {</span>
-<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; matcher.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >      if (recurMatch(val, matcher[i])) {</span>
-<span class="cstat-no" title="statement not covered" >        return true;</span>
+<span class="cstat-no" title="statement not covered">  if (typeof matcher === 'number' || typeof matcher === 'string') {</span>
+<span class="cstat-no" title="statement not covered">    return (val === matcher);</span>
+  } else <span class="cstat-no" title="statement not covered">if (matcher instanceof Range) {</span>
+<span class="cstat-no" title="statement not covered">    return matcher.contains(val);</span>
+  } else <span class="cstat-no" title="statement not covered">if (Array.isArray(matcher) || (matcher instanceof Array)) {</span>
+<span class="cstat-no" title="statement not covered">    for (var i = 0; i &lt; matcher.length; i++) {</span>
+<span class="cstat-no" title="statement not covered">      if (recurMatch(val, matcher[i])) {</span>
+<span class="cstat-no" title="statement not covered">        return true;</span>
       }
     }
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return false;</span>
+<span class="cstat-no" title="statement not covered">  return false;</span>
 }
 &nbsp;
 /* Date-based scheduler */
-<span class="fstat-no" title="function not covered" >function runOnDate(date, job) {</span>
-<span class="cstat-no" title="statement not covered" >  var now = (new Date()).getTime();</span>
-<span class="cstat-no" title="statement not covered" >  var then = date.getTime();</span>
+<span class="fstat-no" title="function not covered">function runOnDate(date, job) {</span>
+<span class="cstat-no" title="statement not covered">  var now = (new Date()).getTime();</span>
+<span class="cstat-no" title="statement not covered">  var then = date.getTime();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (then &lt; now) {</span>
-<span class="cstat-no" title="statement not covered" >    setImmediate(job);</span>
-<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="cstat-no" title="statement not covered">  if (then &lt; now) {</span>
+<span class="cstat-no" title="statement not covered">    setImmediate(job);</span>
+<span class="cstat-no" title="statement not covered">    return null;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return lt.setTimeout(job, (then - now));</span>
+<span class="cstat-no" title="statement not covered">  return lt.setTimeout(job, (then - now));</span>
 }
 &nbsp;
 var invocations = [];
 var currentInvocation = null;
 &nbsp;
-<span class="fstat-no" title="function not covered" >function scheduleInvocation(invocation) {</span>
-<span class="cstat-no" title="statement not covered" >  sorted.add(invocations, invocation, sorter);</span>
-<span class="cstat-no" title="statement not covered" >  prepareNextInvocation();</span>
-<span class="cstat-no" title="statement not covered" >  invocation.job.emit('scheduled', invocation.fireDate);</span>
+<span class="fstat-no" title="function not covered">function scheduleInvocation(invocation) {</span>
+<span class="cstat-no" title="statement not covered">  sorted.add(invocations, invocation, sorter);</span>
+<span class="cstat-no" title="statement not covered">  prepareNextInvocation();</span>
+<span class="cstat-no" title="statement not covered">  invocation.job.emit('scheduled', invocation.fireDate);</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function prepareNextInvocation() {</span>
-<span class="cstat-no" title="statement not covered" >  if (invocations.length &gt; 0 &amp;&amp; currentInvocation !== invocations[0]) {</span>
-<span class="cstat-no" title="statement not covered" >    if (currentInvocation !== null) {</span>
-<span class="cstat-no" title="statement not covered" >      lt.clearTimeout(currentInvocation.timerID);</span>
-<span class="cstat-no" title="statement not covered" >      currentInvocation.timerID = null;</span>
-<span class="cstat-no" title="statement not covered" >      currentInvocation = null;</span>
+<span class="fstat-no" title="function not covered">function prepareNextInvocation() {</span>
+<span class="cstat-no" title="statement not covered">  if (invocations.length &gt; 0 &amp;&amp; currentInvocation !== invocations[0]) {</span>
+<span class="cstat-no" title="statement not covered">    if (currentInvocation !== null) {</span>
+<span class="cstat-no" title="statement not covered">      lt.clearTimeout(currentInvocation.timerID);</span>
+<span class="cstat-no" title="statement not covered">      currentInvocation.timerID = null;</span>
+<span class="cstat-no" title="statement not covered">      currentInvocation = null;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    currentInvocation = invocations[0];</span>
+<span class="cstat-no" title="statement not covered">    currentInvocation = invocations[0];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var job = currentInvocation.job;</span>
-<span class="cstat-no" title="statement not covered" >    var cinv = currentInvocation;</span>
-<span class="cstat-no" title="statement not covered" >    currentInvocation.timerID = runOnDate(currentInvocation.fireDate, <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >      currentInvocationFinished();</span>
+<span class="cstat-no" title="statement not covered">    var job = currentInvocation.job;</span>
+<span class="cstat-no" title="statement not covered">    var cinv = currentInvocation;</span>
+<span class="cstat-no" title="statement not covered">    currentInvocation.timerID = runOnDate(currentInvocation.fireDate, <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">      currentInvocationFinished();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (job.callback) {</span>
-<span class="cstat-no" title="statement not covered" >        job.callback();</span>
+<span class="cstat-no" title="statement not covered">      if (job.callback) {</span>
+<span class="cstat-no" title="statement not covered">        job.callback();</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (cinv.recurrenceRule.recurs || cinv.recurrenceRule._endDate === null) {</span>
-<span class="cstat-no" title="statement not covered" >        var inv = scheduleNextRecurrence(cinv.recurrenceRule, cinv.job, cinv.fireDate, cinv.endDate);</span>
-<span class="cstat-no" title="statement not covered" >        if (inv !== null) {</span>
-<span class="cstat-no" title="statement not covered" >          inv.job.trackInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">      if (cinv.recurrenceRule.recurs || cinv.recurrenceRule._endDate === null) {</span>
+<span class="cstat-no" title="statement not covered">        var inv = scheduleNextRecurrence(cinv.recurrenceRule, cinv.job, cinv.fireDate, cinv.endDate);</span>
+<span class="cstat-no" title="statement not covered">        if (inv !== null) {</span>
+<span class="cstat-no" title="statement not covered">          inv.job.trackInvocation(inv);</span>
         }
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      job.stopTrackingInvocation(cinv);</span>
+<span class="cstat-no" title="statement not covered">      job.stopTrackingInvocation(cinv);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      job.invoke();</span>
-<span class="cstat-no" title="statement not covered" >      job.emit('run');</span>
+<span class="cstat-no" title="statement not covered">      job.invoke();</span>
+<span class="cstat-no" title="statement not covered">      job.emit('run');</span>
     });
   }
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function currentInvocationFinished() {</span>
-<span class="cstat-no" title="statement not covered" >  invocations.shift();</span>
-<span class="cstat-no" title="statement not covered" >  currentInvocation = null;</span>
-<span class="cstat-no" title="statement not covered" >  prepareNextInvocation();</span>
+<span class="fstat-no" title="function not covered">function currentInvocationFinished() {</span>
+<span class="cstat-no" title="statement not covered">  invocations.shift();</span>
+<span class="cstat-no" title="statement not covered">  currentInvocation = null;</span>
+<span class="cstat-no" title="statement not covered">  prepareNextInvocation();</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function cancelInvocation(invocation) {</span>
-<span class="cstat-no" title="statement not covered" >  var idx = invocations.indexOf(invocation);</span>
-<span class="cstat-no" title="statement not covered" >  if (idx &gt; -1) {</span>
-<span class="cstat-no" title="statement not covered" >    invocations.splice(idx, 1);</span>
-<span class="cstat-no" title="statement not covered" >    if (invocation.timerID !== null) {</span>
-<span class="cstat-no" title="statement not covered" >      lt.clearTimeout(invocation.timerID);</span>
+<span class="fstat-no" title="function not covered">function cancelInvocation(invocation) {</span>
+<span class="cstat-no" title="statement not covered">  var idx = invocations.indexOf(invocation);</span>
+<span class="cstat-no" title="statement not covered">  if (idx &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered">    invocations.splice(idx, 1);</span>
+<span class="cstat-no" title="statement not covered">    if (invocation.timerID !== null) {</span>
+<span class="cstat-no" title="statement not covered">      lt.clearTimeout(invocation.timerID);</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (currentInvocation === invocation) {</span>
-<span class="cstat-no" title="statement not covered" >      currentInvocation = null;</span>
+<span class="cstat-no" title="statement not covered">    if (currentInvocation === invocation) {</span>
+<span class="cstat-no" title="statement not covered">      currentInvocation = null;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    invocation.job.emit('canceled', invocation.fireDate);</span>
-<span class="cstat-no" title="statement not covered" >    prepareNextInvocation();</span>
+<span class="cstat-no" title="statement not covered">    invocation.job.emit('canceled', invocation.fireDate);</span>
+<span class="cstat-no" title="statement not covered">    prepareNextInvocation();</span>
   }
 }
 &nbsp;
 /* Recurrence scheduler */
-<span class="fstat-no" title="function not covered" >function scheduleNextRecurrence(rule, job, prevDate, endDate) {</span>
+<span class="fstat-no" title="function not covered">function scheduleNextRecurrence(rule, job, prevDate, endDate) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  prevDate = (prevDate instanceof Date) ? prevDate : (new Date());</span>
+<span class="cstat-no" title="statement not covered">  prevDate = (prevDate instanceof Date) ? prevDate : (new Date());</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var date = (rule instanceof RecurrenceRule) ? rule.nextInvocationDate(prevDate) : rule.next();</span>
-<span class="cstat-no" title="statement not covered" >  if (date === null) {</span>
-<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="cstat-no" title="statement not covered">  var date = (rule instanceof RecurrenceRule) ? rule.nextInvocationDate(prevDate) : rule.next();</span>
+<span class="cstat-no" title="statement not covered">  if (date === null) {</span>
+<span class="cstat-no" title="statement not covered">    return null;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if ((endDate instanceof Date) &amp;&amp; date.getTime() &gt; endDate.getTime()) {</span>
-<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="cstat-no" title="statement not covered">  if ((endDate instanceof Date) &amp;&amp; date.getTime() &gt; endDate.getTime()) {</span>
+<span class="cstat-no" title="statement not covered">    return null;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var inv = new Invocation(job, date, rule, endDate);</span>
-<span class="cstat-no" title="statement not covered" >  scheduleInvocation(inv);</span>
+<span class="cstat-no" title="statement not covered">  var inv = new Invocation(job, date, rule, endDate);</span>
+<span class="cstat-no" title="statement not covered">  scheduleInvocation(inv);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return inv;</span>
+<span class="cstat-no" title="statement not covered">  return inv;</span>
 }
 &nbsp;
 /* Convenience methods */
 var scheduledJobs = {};
 &nbsp;
-<span class="fstat-no" title="function not covered" >function scheduleJob() {</span>
-<span class="cstat-no" title="statement not covered" >  if (arguments.length &lt; 2) {</span>
-<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="fstat-no" title="function not covered">function scheduleJob() {</span>
+<span class="cstat-no" title="statement not covered">  if (arguments.length &lt; 2) {</span>
+<span class="cstat-no" title="statement not covered">    return null;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var name = (arguments.length &gt;= 3 &amp;&amp; typeof arguments[0] === 'string') ? arguments[0] : null;</span>
-<span class="cstat-no" title="statement not covered" >  var spec = name ? arguments[1] : arguments[0];</span>
-<span class="cstat-no" title="statement not covered" >  var method = name ? arguments[2] : arguments[1];</span>
-<span class="cstat-no" title="statement not covered" >  var callback = name ? arguments[3] : arguments[2];</span>
+<span class="cstat-no" title="statement not covered">  var name = (arguments.length &gt;= 3 &amp;&amp; typeof arguments[0] === 'string') ? arguments[0] : null;</span>
+<span class="cstat-no" title="statement not covered">  var spec = name ? arguments[1] : arguments[0];</span>
+<span class="cstat-no" title="statement not covered">  var method = name ? arguments[2] : arguments[1];</span>
+<span class="cstat-no" title="statement not covered">  var callback = name ? arguments[3] : arguments[2];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var job = new Job(name, method, callback);</span>
+<span class="cstat-no" title="statement not covered">  var job = new Job(name, method, callback);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (job.schedule(spec)) {</span>
-<span class="cstat-no" title="statement not covered" >    return job;</span>
+<span class="cstat-no" title="statement not covered">  if (job.schedule(spec)) {</span>
+<span class="cstat-no" title="statement not covered">    return job;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return null;</span>
+<span class="cstat-no" title="statement not covered">  return null;</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function rescheduleJob(job, spec) {</span>
-<span class="cstat-no" title="statement not covered" >  if (job instanceof Job) {</span>
-<span class="cstat-no" title="statement not covered" >    if (job.reschedule(spec)) {</span>
-<span class="cstat-no" title="statement not covered" >      return job;</span>
+<span class="fstat-no" title="function not covered">function rescheduleJob(job, spec) {</span>
+<span class="cstat-no" title="statement not covered">  if (job instanceof Job) {</span>
+<span class="cstat-no" title="statement not covered">    if (job.reschedule(spec)) {</span>
+<span class="cstat-no" title="statement not covered">      return job;</span>
     }
-  } else <span class="cstat-no" title="statement not covered" >if (typeof job == 'string' || job instanceof String) {</span>
-<span class="cstat-no" title="statement not covered" >    if (job in scheduledJobs &amp;&amp; scheduledJobs.hasOwnProperty(job)) {</span>
-<span class="cstat-no" title="statement not covered" >      if (scheduledJobs[job].reschedule(spec)) {</span>
-<span class="cstat-no" title="statement not covered" >        return scheduledJobs[job];</span>
+  } else <span class="cstat-no" title="statement not covered">if (typeof job == 'string' || job instanceof String) {</span>
+<span class="cstat-no" title="statement not covered">    if (job in scheduledJobs &amp;&amp; scheduledJobs.hasOwnProperty(job)) {</span>
+<span class="cstat-no" title="statement not covered">      if (scheduledJobs[job].reschedule(spec)) {</span>
+<span class="cstat-no" title="statement not covered">        return scheduledJobs[job];</span>
       }
     }
   }
-<span class="cstat-no" title="statement not covered" >  return null;</span>
+<span class="cstat-no" title="statement not covered">  return null;</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function cancelJob(job) {</span>
-<span class="cstat-no" title="statement not covered" >  var success = false;</span>
-<span class="cstat-no" title="statement not covered" >  if (job instanceof Job) {</span>
-<span class="cstat-no" title="statement not covered" >    success = job.cancel();</span>
-  } else <span class="cstat-no" title="statement not covered" >if (typeof job == 'string' || job instanceof String) {</span>
-<span class="cstat-no" title="statement not covered" >    if (job in scheduledJobs &amp;&amp; scheduledJobs.hasOwnProperty(job)) {</span>
-<span class="cstat-no" title="statement not covered" >      success = scheduledJobs[job].cancel();</span>
+<span class="fstat-no" title="function not covered">function cancelJob(job) {</span>
+<span class="cstat-no" title="statement not covered">  var success = false;</span>
+<span class="cstat-no" title="statement not covered">  if (job instanceof Job) {</span>
+<span class="cstat-no" title="statement not covered">    success = job.cancel();</span>
+  } else <span class="cstat-no" title="statement not covered">if (typeof job == 'string' || job instanceof String) {</span>
+<span class="cstat-no" title="statement not covered">    if (job in scheduledJobs &amp;&amp; scheduledJobs.hasOwnProperty(job)) {</span>
+<span class="cstat-no" title="statement not covered">      success = scheduledJobs[job].cancel();</span>
     }
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return success;</span>
+<span class="cstat-no" title="statement not covered">  return success;</span>
 }
 &nbsp;
 /* Public API */
@@ -1964,10 +1962,11 @@ module.exports.scheduledJobs = scheduledJobs;
 module.exports.cancelJob = cancelJob;
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
     <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 15 2017 22:11:49 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
